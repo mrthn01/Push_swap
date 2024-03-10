@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:38:06 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/02/28 23:15:26 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/03 19:37:33 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	sb(t_list **b)
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_list **tail)
+void	ss(t_list **a, t_list **b)
 {
-	sa(tail);
-	sb(tail);
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
 }

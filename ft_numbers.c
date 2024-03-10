@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 13:25:28 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/10 16:16:45 by murathanelc      ###   ########.fr       */
+/*   Created: 2024/03/05 22:38:01 by murathanelc       #+#    #+#             */
+/*   Updated: 2024/03/10 18:11:12 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	maximum_number(t_list *node)
 {
-	t_list	*a;
-	t_list	*b;
+	int	max_number;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (1);
-	else if (argc == 2)
+	max_number = node->data;
+	while (node->next != NULL)
 	{
-		argv = ft_split(argv[1], ' ');
-		stack(&a, argv);
+		if (max_number < node->next->data)
+			max_number = node->next->data;
+		node = node->next;
 	}
-	else
-		stack(&a, argv + 1);
-	check_nodes(&a, &b);
-	free_stack_a(&a);
-	return (0);
+	return (max_number);
+}
+
+int	ft_index(t_list *node, int number)
+{
+	int	i;
+
+	i = 0;
+	if (!node)
+		return (0);
+	while (node->data != number)
+	{
+		i++;
+		node = node->next;
+	}
+	return (i);
 }

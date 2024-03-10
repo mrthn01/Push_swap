@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:34:57 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/02/28 22:07:29 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/10 17:35:17 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,19 @@ void	initialize_node(t_list **node, int value)
 	}
 }
 
-void	add_front(t_list **tail, int value)
+int	sorted(t_list *node)
 {
-	t_list	*node;
+	int	i;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == NULL)
-		return ;
-	node->data = value;
-	node->prev = NULL;
-	node->next = *tail;
-	if (*tail != NULL)
-		(*tail)->prev = node;
-	*tail = node;
-}
-
-void	delete_node(t_list *node)
-{
-	if (node->prev != NULL)
-		node->prev->next = node->next;
-	if (node->next != NULL)
-		node->next->prev = node->prev;
-	free(node);
+	i = node->data;
+	while (node)
+	{
+		if (i > node->data)
+			return (0);
+		i = node->data;
+		node = node->next;
+	}
+	return (1);
 }
 
 int	ft_count_list(t_list *node)

@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 23:33:29 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/02/28 23:10:32 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/10 16:31:44 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ra(t_list **a)
 	int	i;
 
 	i = ft_count_list(*a);
-	if (!a || !(*a) || i == 1)
+	if (!a || i == 1)
 		return ;
 	rotate(a);
 	write(1, "ra\n", 3);
@@ -45,7 +45,15 @@ void	rb(t_list **b)
 	int	i;
 
 	i = ft_count_list(*b);
-	if (!b || !(*b) || i == 1)
+	if (!b || i == 1)
 		return ;
+	rotate(b);
 	write(1, "rb\n", 3);
+}
+
+void	rr(t_list **a, t_list **b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }

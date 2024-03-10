@@ -1,7 +1,10 @@
 NAME = push_swap.a
 
 SRCS = ft_lists.c ft_push.c ft_reverse_rotate.c ft_rotate.c \
-		ft_swap.c main.c ft_split.c ft_stack_initialize.c
+		ft_swap.c main.c ft_split.c ft_stack_initialize.c \
+		ft_sort.c ft_error.c ft_initialize_a.c ft_numbers.c \
+		ft_initialize_b.c ft_cost_a.c ft_cost_b.c ft_move_a_to_b.c \
+		ft_move_b_to_a.c
 	
 OBJS = $(SRCS:.c=.o)
 
@@ -23,4 +26,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
