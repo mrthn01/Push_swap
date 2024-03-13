@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:01:52 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/10 18:10:20 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 14:53:30 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,96 @@ void	sort_three_numbers(t_list **a)
 	}
 }
 
-void	more_than_three_number(t_list **a, t_list **b)
+void	move_a_to_b(t_list **stack_a, t_list **stack_b)
 {
-	int	number_of_nodes;
+	t_list	*current;
+	int		i;
 
-	number_of_nodes = ft_count_list(*a);
-	if (number_of_nodes-- > 3)
-		pb(b, a);
-	if (number_of_nodes-- > 3)
-		pb(b, a);
-	if (ft_count_list(*a) > 3 && !sorted(*a))
-		move_a_to_b(a, b);
-	move_b_to_a(a, b);
-	
+	while (ft_count_list(*stack_a) > 3 && !sorted(*stack_a))
+	{
+		current = *stack_a;
+		i = cost_b(*stack_a, *stack_b);
+		while (i >= 0)
+		{
+			if (i == cost_rr_b(*stack_a, *stack_b, current->data))
+				i = rr_a(stack_a, stack_b, current->data);
+			else if (i == cost_rrr_b(*stack_a, *stack_b, current->data))
+				i = rrr_a(stack_a, stack_b, current->data);
+			else if (i == cost_rb_rra_b(*stack_a, *stack_b, current->data))
+				i = rra_rb_a(stack_a, stack_b, current->data);
+			else if (i == cost_rrb_ra_b(*stack_a, *stack_b, current->data))
+				i = ra_rrb_a(stack_a, stack_b, current->data);
+			else
+				current = current->next;
+		}
+	}
 }
 
-void	check_nodes(t_list **a, t_list **b)
+t_list	*more_than_three_number(t_list **a)
 {
-	int	i;
+	t_list	*b;
 
-	i = ft_count_list(*a);
-	if (*a)
+	b = NULL;
+	if (ft_count_list(*a) > 3 && !sorted(*a))
+		pb(&b, a);
+	if (ft_count_list(*a) > 3 && !sorted(*a))
+		pb(&b, a);
+	if (ft_count_list(*a) > 3 && !sorted(*a))
+		move_a_to_b(a, &b);
+	if (!sorted(*a))
+		sort_three_numbers(a);
+	return (b);
+}
+
+t_list	**move_b_to_a(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*current;
+	int		i;
+
+	while ((*stack_b) != NULL)
 	{
-		if (i == 2)
+		current = *stack_b;
+		i = cost_a(*stack_a, *stack_b);
+		while (i >= 0)
 		{
-			if ((*a)->data > (*a)->next->data)
-				sa(a);
+			if (i == cost_rr_a(*stack_a, *stack_b, current->data))
+				i = rr_b(stack_a, stack_b, current->data);
+			else if (i == cost_rrr_a(*stack_a, *stack_b, current->data))
+				i = rrr_b(stack_a, stack_b, current->data);
+			else if (i == cost_rra_rb_a(*stack_a, *stack_b, current->data))
+				i = rb_rra_b(stack_a, stack_b, current->data);
+			else if (i == cost_ra_rrb_a(*stack_a, *stack_b, current->data))
+				i = rrb_ra_b(stack_a, stack_b, current->data);
+			else
+				current = current->next;
 		}
-		if (i == 3)
-			sort_three_numbers(a);
-		if (i > 3)
-			more_than_three_number(a, b);
+	}
+	return (stack_a);
+}
+
+void	check_nodes(t_list **a)
+{
+	t_list	*b;
+	int		i;
+
+	b = NULL;
+	i = ft_index(*a, minimum_number(*a));
+	if (ft_count_list(*a) == 2 && (*a)->data == maximum_number(*a))
+		sa(a);
+	else
+	{
+		b = more_than_three_number(a);
+		a = move_b_to_a(a, &b);
+		i = ft_index(*a, minimum_number(*a));
+		if (i < ft_count_list(*a) - i)
+		{
+			while ((*a)->data != minimum_number(*a))
+				ra(a);
+		}
+		else
+		{
+				while ((*a)->data != minimum_number(*a))
+					rra(a);
+		}	
 	}
 }

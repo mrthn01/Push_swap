@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:38:06 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/03 19:37:33 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/12 22:45:16 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,12 @@ void	swap(t_list **tail)
 
 void	sa(t_list **a)
 {
-	int	i;
-
-	i = ft_count_list(*a);
-	if (!a || !(*a) || i == 1)
-	{
-		exit(1);
-		return ;
-	}
 	swap(a);
 	write(1, "sa\n", 3);
 }
 
 void	sb(t_list **b)
 {
-	int	i;
-
-	i = ft_count_list(*b);
-	if (!b || !(*b) || i == 1)
-	{
-		exit(1);
-		return ;
-	}
 	swap(b);
 	write(1, "sb\n", 3);
 }

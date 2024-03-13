@@ -6,14 +6,15 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 22:09:16 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/10 16:18:04 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 16:25:15 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+void	ft_error(void)
 {
+	system("leaks push_swap");
 	write(1, "Error\n", 6);
 	exit(1);
 }
@@ -24,14 +25,13 @@ void	free_stack_a(t_list **tail)
 
 	if (!tail)
 		return ;
-	current = *tail;
-	while (current->next != NULL)
+	while (*tail)
 	{
-		current = current->next;
-		free(current->prev);
+		current = (*tail)->next;
+		free(*tail);
+		*tail = current;
 	}
-	free(current);
-	*tail = NULL;
+	tail = NULL;
 }
 
 void	free_split(char **lst)
@@ -49,23 +49,27 @@ void	free_split(char **lst)
 	*lst = NULL;
 }
 
-int	check_number(t_list **tail)
+int	check_number(t_list *tail)
 {
-	t_list	*current;
+	t_list	*next_node;
 
-	if (!tail)
-		return (1);
-	current = (*tail)->next;
-	while (current->next != NULL)
+	while (tail)
 	{
-		if ((*tail)->data == current->data)
-			return (1);
-		current = current->next;
+		next_node = tail->next;
+		while (next_node)
+		{
+			if (next_node->data == tail->data)
+				return (1);
+			next_node = next_node->next;
+		}
+		tail = tail->next;
 	}
 	return (0);
 }
 
-int	ft_isdigit(const char c)
+int	ft_isdigit(int c)
 {
-	return (c >= 48 && c <= 57);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

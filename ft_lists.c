@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:34:57 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/10 17:35:17 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 14:22:35 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
-		return (NULL);
+		ft_error();
 	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);
@@ -28,7 +28,7 @@ void	initialize_node(t_list **node, int value)
 
 	new_node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
-		return ;
+		ft_error();
 	new_node->next = NULL;
 	new_node->data = value;
 	if (!(*node))
@@ -59,15 +59,48 @@ int	sorted(t_list *node)
 	return (1);
 }
 
-int	ft_count_list(t_list *node)
+int	target_a(t_list *a, int number)
 {
-	int	i;
+	t_list	*tmp;
+	int		i;
 
-	i = 0;
-	while (node != NULL)
+	i = 1;
+	if (number > a->data && number < ft_lstlast(a)->data)
+		i = 0;
+	else if (number < a->data || number > maximum_number(a))
+		i = ft_index(a, maximum_number(a));
+	else
 	{
-		i += 1;
-		node = node->next;
+		tmp = a->next;
+		while (a->data < number || tmp->data > number)
+		{
+			a = a->next;
+			tmp = a->next;
+			i++;
+		}
+	}
+	return (i);
+}
+
+int	target_b(t_list *b, int number)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 1;
+	if (number > b->data && number < ft_lstlast(b)->data)
+		i = 0;
+	else if (number < b->data || number > maximum_number(b))
+		i = ft_index(b, maximum_number(b));
+	else
+	{
+		tmp = b->next;
+		while (number > b->data || number < tmp->data)
+		{
+			b = b->next;
+			tmp = b->next;
+			i++;
+		}
 	}
 	return (i);
 }
