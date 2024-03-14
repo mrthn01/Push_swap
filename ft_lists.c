@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:34:57 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 14:22:35 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 23:44:20 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ int	target_a(t_list *a, int number)
 	int		i;
 
 	i = 1;
-	if (number > a->data && number < ft_lstlast(a)->data)
+	if (number < a->data && number > ft_lstlast(a)->data)
 		i = 0;
-	else if (number < a->data || number > maximum_number(a))
-		i = ft_index(a, maximum_number(a));
+	else if (number < minimum_number(a) || number > maximum_number(a))
+		i = ft_index(a, minimum_number(a));
 	else
 	{
 		tmp = a->next;
-		while (a->data < number || tmp->data > number)
+		while (a->data > number || tmp->data < number)
 		{
 			a = a->next;
 			tmp = a->next;
@@ -90,7 +90,7 @@ int	target_b(t_list *b, int number)
 	i = 1;
 	if (number > b->data && number < ft_lstlast(b)->data)
 		i = 0;
-	else if (number < b->data || number > maximum_number(b))
+	else if (number < minimum_number(b) || number > maximum_number(b))
 		i = ft_index(b, maximum_number(b));
 	else
 	{

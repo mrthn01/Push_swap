@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:01:52 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 14:53:30 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 21:38:17 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	check_nodes(t_list **a)
 
 	b = NULL;
 	i = ft_index(*a, minimum_number(*a));
-	if (ft_count_list(*a) == 2 && (*a)->data == maximum_number(*a))
+	if (ft_count_list(*a) == 2)
 		sa(a);
 	else
 	{

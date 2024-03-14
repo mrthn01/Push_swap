@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 23:31:37 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/12 22:20:59 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 21:45:35 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	cost_a(t_list *a, t_list *b)
 		if (i > cost_rrr_a(a, b, tmp->data))
 			i = cost_rrr_a(a, b, tmp->data);
 		if (i > cost_ra_rrb_a(a, b, tmp->data))
-			i = cost_rra_rb_a(a, b, tmp->data);
+			i = cost_ra_rrb_a(a, b, tmp->data);
 		if (i > cost_rra_rb_a(a, b, tmp->data))
 			i = cost_rra_rb_a(a, b, tmp->data);
 		tmp = tmp->next;

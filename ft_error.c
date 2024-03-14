@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 22:09:16 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 16:25:15 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/13 21:24:30 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_error(void)
 {
-	system("leaks push_swap");
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
