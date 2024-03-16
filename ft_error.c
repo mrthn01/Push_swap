@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 22:09:16 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 21:24:30 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/15 23:45:34 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void	free_stack_a(t_list **tail)
 	tail = NULL;
 }
 
-void	free_split(char **lst)
+void	free_split(char **argv)
 {
-	char	*tmp;
+	int	i;
 
-	if (!lst)
+	i = 0;
+	if (NULL == argv || NULL == *argv)
 		return ;
-	while ((*lst) != NULL)
+	while (argv[i])
 	{
-		tmp = *lst;
-		lst++;
-		free(tmp);
+		free(argv[i]);
+		i++;	
 	}
-	*lst = NULL;
+	free(argv);
 }
 
 int	check_number(t_list *tail)

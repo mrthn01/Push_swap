@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:00:46 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 16:17:43 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/15 23:24:31 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,24 @@ static int	ft_atoi_long(char *s)
 	return (sign * result);
 }
 
-void	stack(t_list **a, char **argv)
+void	stack(t_list **a, int argc, char **argv)
 {
+	char	**str;
 	int		i;
-	int		number;
 
 	i = 0;
-	if (!a)
-		return ;
-	while (argv[i])
+	if (argc == 2)
+		str = ft_split(argv[1], ' ');
+	else
 	{
-		number = ft_atoi_long(argv[i]);
-		initialize_node(a, number);
+		i = 1;
+		str = argv;
+	}
+	while (str[i])
+	{
+		initialize_node(a, ft_atoi_long(str[i]));
 		i++;
 	}
+	if (argc == 2)
+		free_split(str);
 }

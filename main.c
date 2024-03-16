@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:25:28 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 23:52:54 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/15 22:14:02 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,16 @@ int	main(int argc, char **argv)
 	a = NULL;
 	if (argc > 1)
 	{
-		if (argc == 2)
+		stack(&a, argc, argv);
+		if (!a || check_number(a))
 		{
-			argv = ft_split(argv[1], ' ');
-			stack(&a, argv);
-			if (!a)
-				ft_error();
-		}
-		else
-		{
-			stack(&a, argv + 1);
-			if (!a || check_number(a))
-			{
-				ft_error();
-				free_stack_a(&a);
-			}
-			if (!sorted(a))
-				check_nodes(&a);
-			system("leaks push_swap");
 			free_stack_a(&a);
+			ft_error();
 		}
+		if (!sorted(a))
+			check_nodes(&a);
+		system("leaks push_swap");
+		free_stack_a(&a);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: murathanelcuman <murathanelcuman@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:16:17 by murathanelc       #+#    #+#             */
-/*   Updated: 2024/03/13 14:35:01 by murathanelc      ###   ########.fr       */
+/*   Updated: 2024/03/14 19:45:15 by murathanelc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	reverse_rotate(t_list **tail);
 int		ft_count_list(t_list *node);
 
 char	**ft_split(char const *s, char c);
-void	stack(t_list **a, char **argv);
+void	stack(t_list **a, int argc, char **argv);
 void	ra(t_list **a);
 void	rb(t_list **b);
 void	rr(t_list **a, t_list **b);
